@@ -10,24 +10,34 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://blog.ni9ht.top/",
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), react(), sitemap()],
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    react(),
+    sitemap(),
+  ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, {
-      test: "Table of contents"
-    }]],
+    remarkPlugins: [
+      remarkToc,
+      [
+        remarkCollapse,
+        {
+          test: "Table of contents",
+        },
+      ],
+    ],
     shikiConfig: {
       theme: "one-dark-pro",
-      wrap: true
+      wrap: true,
     },
-    extendDefaultPlugins: true
+    extendDefaultPlugins: true,
   },
   vite: {
     optimizeDeps: {
-      exclude: ["@resvg/resvg-js"]
-    }
+      exclude: ["@resvg/resvg-js"],
+    },
   },
 });
