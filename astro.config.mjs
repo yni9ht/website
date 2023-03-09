@@ -6,7 +6,6 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
-import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,6 +30,4 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"]
     }
   },
-  output: "server",
-  adapter: cloudflare()
 });

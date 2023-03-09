@@ -15,7 +15,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^6.2.0",
     "@astrojs/rss": "^2.1.0",
     "@resvg/resvg-js": "^2.4.1",
     "astro": "^2.1.2",
