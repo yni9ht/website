@@ -58,3 +58,31 @@ func main() {
 }
 
 ```
+
+### 分析
+
+我们先是通过 `gin.Default()` 创建了一个 Gin 的实例（该实例类型为 `*Engine`），然后通过 `r.GET()` 注册了一个 `GET`
+请求的路由，最后通过 `r.Run()` 启动了 Web 服务。
+
+#### Engine
+
+这个对象是 Gin 的核心，我们来看下他的结构体定义。
+
+```go
+type Engine struct {
+	RouterGroup
+	// ...... 省略部分代码
+	allNoRoute       HandlersChain
+	allNoMethod      HandlersChain
+	noRoute          HandlersChain
+	noMethod         HandlersChain
+	pool             sync.Pool
+	trees            methodTrees
+	// ...... 省略部分代码
+}
+
+var _ IRouter = (*Engine)(nil)
+```
+
+可以看到，`Engine` 嵌套了 `RouterGroup`。并且还包含一个 `trees` 字段，该字段存储的是所有的路由信息，是 Gin 的核心之一，
+稍后我们会详细分析该路由树的具体细节。
